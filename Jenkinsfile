@@ -15,11 +15,12 @@ stage('Sonarcube report')
 {
 sh "${mavenHome}/bin/mvn sonar:sonar"
 }
-*/
+
 stage('uploadartifactintonexus')
 {
 sh "${mavenHome}/bin/mvn deploy"
 }
+*/
 stage('deployintotomcatserver')
 {
 sshagent(['78838617-3342-431c-bb55-5f0bcef3dcf6']) {
