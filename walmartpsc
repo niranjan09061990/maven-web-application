@@ -1,9 +1,5 @@
 node
 {
-def mavenHome = tool name: "maven3.6.3"
-
- properties([[$class: 'JiraProjectProperty'], buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([pollSCM('* * * * *')])])
-
 
  stage('CheckoutCode')
  {
@@ -30,7 +26,7 @@ def mavenHome = tool name: "maven3.6.3"
  stage('DeployappIntoTomcatServer')
  {
  sshagent(['cb97b0ad-6067-42a4-a9c7-4de4cce322e9']) {
-  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.133.236:/opt/apache-tomcat-9.0.41/webapps/"  
+  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@http://13.233.137.123:9980/:/opt/apache-tomcat-9.0.41/webapps/"  
  }
  }
   */
